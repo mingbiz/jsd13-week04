@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ร้านหนังสือมือสอง - BookXChange</title>
+    <link rel="stylesheet" href="MyPageStyle.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1>Book<span>XChange</span></h1>
+        <p style="font-size:20px;opacity:0.9;">ร้านหนังสือมือสองออนไลน์</p>
+        <button class="cart-btn" onclick="toggleCart()">
+            <span>&#128722;</span>
+            <span>ตะกร้า</span>
+            <span class="cart-count" id="cart-count">0</span>
+        </button>
+    </header>
+
+    <section class="hero">
+        <h2>หนังสือมือสองคุณภาพดี</h2>
+        <p>รวบรวมหนังสือหลากหลายประเภท ในราคาสบายกระเป๋า</p>
+    </section>
+
+    <div class="container">
+        <h2 class="section-title">หนังสือทั้งหมด</h2>
+        <div class="books-grid" id="books-grid">
+        </div>
+    </div>
+
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-content">
+            <h2>&#128722; ตะกร้าสินค้า</h2>
+            <div id="cart-items-container">
+                <div class="empty-cart">
+                    <div class="empty-cart-icon">&#128214;</div>
+                    <p>ยังไม่มีสินค้าในตะกร้า</p>
+                </div>
+            </div>
+            <div class="cart-total">
+                ยอดรวม: <span id="cart-total">0</span> ฿
+            </div>
+            <div class="cart-actions">
+                <button class="close-btn" onclick="toggleCart()">ปิด</button>
+                <button class="checkout-btn" onclick="checkout()">สั่งซื้อ</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification" id="notification"></div>
+
+    <footer class="footer">
+        <p>&copy; 2026 BookXChange - ร้านหนังสือมือสองออนไลน์</p>
+        <p class="notice">This is the sample website for education purpose only. All products are not for sale.</p>
+        <p>เว็บไซต์นี้จัดทำขึ้นเพื่อการศึกษาเท่านั้น</p>
+    </footer>
+
+    <script>
+        const books = [
+            {
+                id: 1,
+                title: 'BrandWarriors',
+                author: 'ไม่ทราบผู้แต่ง',
+                price: 250,
+                image: 'MyPagePic/BrandWarriors.jpg',
+                desc: 'รายละเอียดเพิ่มเติมของ BrandWarriors'
+            },
+            {
+                id: 2,
+                title: 'TradeAtHome',
+                author: 'ไม่ทราบผู้แต่ง',
+                price: 180,
+                image: 'MyPagePic/TradeAtHome.jpg',
+                desc: 'รายละเอียดเพิ่มเติมของ TradeAtHome'
+            },
+            {
+                id: 3,
+                title: 'กินกบตัวนั้นซะ EatThatFrog',
+                author: 'ไม่ทราบผู้แต่ง',
+                price: 220,
+                image: 'MyPagePic/กินกบตัวนั้นซะEatThatFrog.jpg',
+                desc: 'รายละเอียดเพิ่มเติมของ กินกบตัวนั้นซะ EatThatFrog'
+            },
+            {
+                id: 4,
+                title: 'ความรู้เรื่องบัญชี',
+                author: 'ไม่ทราบผู้แต่ง',
+                price: 350,
+                image: 'MyPagePic/ความรู้เรื่องบัญชี.jpg',
+                desc: 'รายละเอียดเพิ่มเติมของ ความรู้เรื่องบัญชี'
+            },
+            {
+                id: 5,
+                title: 'คัมภีร์ Manager CEO Boss Leader Executive',
+                author: 'ไม่ทราบผู้แต่ง',
+                price: 190,
+                image: 'MyPagePic/คัมภีร์ManagerCEOBossLeaderExecutive.jpg',
+                desc: 'รายละเอียดเพิ่มเติมของ คัมภีร์ Manager CEO Boss Leader Executive'
+            },
+            {
+                id: 6,
+                title: 'คัมภีร์นักนวัตกรรม',
+                author: 'ไม่ทราบผู้แต่ง',
+                price: 280,
+                image: 'MyPagePic/คัมภีร์นักนวัตกรรม.jpeg',
+                desc: 'รายละเอียดเพิ่มเติมของ คัมภีร์นักนวัตกรรม'
+            },
+            {
+                id: 7,
+                title: 'เทคนิคการประชุม',
+                author: 'ไม่ทราบผู้แต่ง',
+                price: 200,
+                image: 'MyPagePic/เทคนิคการประชุม.jpeg',
+                desc: 'รายละเอียดเพิ่มเติมของ เทคนิคการประชุม'
+            },
+            {
+                id: 8,
+                title: 'เทคนิคการเป็นวิทยากรที่ประสบความสำเร็จ',
+                author: 'ไม่ทราบผู้แต่ง',
+                price: 230,
+                image: 'MyPagePic/เทคนิคการเป็นวิทยากรที่ประสบความสำเร็จ.jpg',
+                desc: 'รายละเอียดเพิ่มเติมของ เทคนิคการเป็นวิทยากรที่ประสบความสำเร็จ'
+            },
+            {
+                id: 9,
+                title: 'บอกสิจะมีเงินได้ไง',
+                author: 'ไม่ทราบผู้แต่ง',
+                price: 260,
+                image: 'MyPagePic/บอกสิจะมีเงินได้ไง.jpeg',
+                desc: 'รายละเอียดเพิ่มเติมของ บอกสิจะมีเงินได้ไง'
+            },
+            {
+                id: 10,
+                title: 'เบื้องหลังความสำเร็จไอบีเอ็ม',
+                author: 'ไม่ทราบผู้แต่ง',
+                price: 150,
+                image: 'MyPagePic/เบื้องหลังความสำเร็จไอบีเอ็ม.jpg',
+                desc: 'รายละเอียดเพิ่มเติมของ เบื้องหลังความสำเร็จไอบีเอ็ม'
+            }
+        ];
+
+        let cart = {};
+        let totalItems = 0;
+        let totalPrice = 0;
+
+        function renderBooks() {
+            const grid = document.getElementById('books-grid');
+            grid.innerHTML = books.map(book => `
+                <div class="book-card">
+                    <img src="${book.image}" alt="${book.title}" loading="lazy">
+                    <div class="book-info">
+                        <div class="book-title">${book.title}</div>
+                        <div class="book-author">${book.author}</div>
+                        <div class="book-price">${book.price} ฿</div>
+                        <div class="book-desc">${book.desc}</div>
+                        <button class="add-btn" onclick="addToCart(${book.id})">เพิ่มลงตะกร้า</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function addToCart(id) {
+            if (!cart[id]) {
+                cart[id] = { ...books.find(b => b.id === id), qty: 0 };
+            }
+            cart[id].qty++;
+            updateCart();
+            showNotification('เพิ่ม "' + cart[id].title + '" ลงในตะกร้าแล้ว');
+        }
+
+        function removeFromCart(id) {
+            delete cart[id];
+            updateCart();
+        }
+
+        function changeQty(id, delta) {
+            if (cart[id]) {
+                cart[id].qty += delta;
+                if (cart[id].qty <= 0) {
+                    delete cart[id];
+                }
+                updateCart();
+            }
+        }
+
+        function updateCart() {
+            totalItems = 0;
+            totalPrice = 0;
+            const ids = Object.keys(cart);
+            ids.forEach(id => {
+                totalItems += cart[id].qty;
+                totalPrice += cart[id].price * cart[id].qty;
+            });
+
+            document.getElementById('cart-count').textContent = totalItems;
+
+            const container = document.getElementById('cart-items-container');
+            if (ids.length === 0) {
+                container.innerHTML = '<div class="empty-cart"><div class="empty-cart-icon">&#128214;</div><p>ยังไม่มีสินค้าในตะกร้า</p></div>';
+            } else {
+                container.innerHTML = '<ul class="cart-items">' +
+                    ids.map(id => {
+                        const item = cart[id];
+                        return `<li class="cart-item">
+                            <div class="cart-item-info">
+                                <div class="cart-item-title">${item.title}</div>
+                                <div class="cart-item-price">${item.price} ฿</div>
+                            </div>
+                            <div class="cart-item-actions">
+                                <button class="qty-btn" onclick="changeQty(${id}, -1)">-</button>
+                                <span class="qty-display">${item.qty}</span>
+                                <button class="qty-btn" onclick="changeQty(${id}, 1)">+</button>
+                                <button class="remove-btn" onclick="removeFromCart(${id})">ลบ</button>
+                            </div>
+                        </li>`;
+                    }).join('') + '</ul>';
+            }
+
+            document.getElementById('cart-total').textContent = totalPrice;
+        }
+
+        function toggleCart() {
+            document.getElementById('cart-modal').classList.toggle('show');
+        }
+
+        function checkout() {
+            if (totalItems === 0) {
+                showNotification('กรุณาเลือกหนังสือก่อนสั่งซื้อ');
+                return;
+            }
+            showNotification('ขอบคุณที่สั่งซื้อ! (เว็บไซต์นี้เป็นตัวอย่างเพื่อการศึกษาเท่านั้น)');
+            cart = {};
+            updateCart();
+            toggleCart();
+        }
+
+        function showNotification(msg) {
+            const el = document.getElementById('notification');
+            el.textContent = msg;
+            el.classList.add('show');
+            setTimeout(() => el.classList.remove('show'), 2500);
+        }
+
+        document.addEventListener('click', function(e) {
+            const modal = document.getElementById('cart-modal');
+            const content = modal.querySelector('.cart-content');
+            if (modal.classList.contains('show') && !content.contains(e.target) && !e.target.closest('.cart-btn')) {
+                modal.classList.remove('show');
+            }
+        });
+
+        renderBooks();
+    </script>
+
+</body>
+</html>
