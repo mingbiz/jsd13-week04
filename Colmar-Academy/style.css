@@ -400,3 +400,37 @@
   margin: 0;
   line-height: 1.4;
 }
+
+/*===================== footer section ==================*/
+/* คอนเทนเนอร์หลัก (.footer) */
+.footer {
+  display: flex;
+  justify-content: space-between; /* แยกซ้าย-ขวาออกจากกัน */
+  align-items: center;            /* จัดให้อยู่ตรงกลางตามแนวตั้ง */
+  padding: 16px 24px;             /* บน-ล่าง 16px, ซ้าย-ขวา 24px ตามภาพ */
+  background-color: #f4f4f4;      /* สีพื้นหลังเทาอ่อน */
+  border-top: 1px solid #e0e0e0;  /* เส้นขอบสีเทาด้านบน */
+  box-sizing: border-box;
+}
+
+/* ฝั่งซ้าย: ข้อความ Copyright */
+.footer-copyright {
+  font-size: 0.85rem;
+  color: #666666;
+}
+
+/* ฝั่งขวา: ลิงก์เมนู */
+.footer-links {
+  display: flex;
+  gap: 16px;                      /* ระยะห่างระหว่าง Terms และ Privacy */
+}
+
+.footer-links a {
+  font-size: 0.85rem;
+  color: #666666;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #333333;
+}
