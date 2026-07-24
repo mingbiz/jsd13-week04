@@ -1,0 +1,400 @@
+/* คอนเทนเนอร์หลัก (.header) */
+.header {
+  display: flex;
+  justify-content: space-between; /* แยกฝั่งซ้าย (Logo) และฝั่งขวา (Nav) ออกจากกัน */
+  align-items: center;            /* จัดให้อยู่ตรงกลางตามแนวตั้ง */
+  height: 64px;                   /* กำหนดความสูง 64px ตามสเปก */
+  padding: 0 24px;                /* ระยะขอบซ้าย-ขวา 24px */
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+
+/* ฝั่งซ้าย: โลโก้ */
+.header-logo {
+  display: flex;
+  align-items: center;
+  height: 32px;                   /* กำหนดความสูงพื้นที่โลโก้ 32px */
+  gap: 8px;                       /* ระยะห่างระหว่างไอคอนกับข้อความ */
+}
+
+.header-logo img {
+  height: 100%;                   /* ให้ไอคอนขยายเต็มความสูง 32px */
+  width: auto;
+}
+
+.header-logo span {
+  font-size: 1.2rem;
+  color: #333333;
+  letter-spacing: 1px;
+}
+
+.header-logo strong {
+  font-weight: 800;
+  color: #000000;
+}
+
+/* ฝั่งขวา: เมนู */
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;                      /* ระยะห่างระหว่างแต่ละเมนู 16px ตามภาพ */
+}
+
+.header-nav a {
+  text-decoration: none;
+  color: #333333;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.header-nav a:hover {
+  color: #000000;
+}
+
+/*================================================================*/
+/* คอนเทนเนอร์หลัก (.hero) */
+.hero {
+  display: flex;
+  align-items: center;
+  background-color: #dcdcdc;    /* สีพื้นหลังเทาอ่อนตามภาพ */
+  padding: 32px 24px;           /* บน-ล่าง 32px, ซ้าย-ขวา 24px */
+  gap: 24px;                    /* ระยะห่างระหว่างรูปกับเนื้อหา 24px */
+  box-sizing: border-box;
+}
+
+/* ส่วนรูปภาพฝั่งซ้าย (60%) */
+.hero-image {
+  flex: 0 0 60%;                /* กำหนดความกว้าง 60% */
+  max-width: 60%;
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ส่วนเนื้อหาฝั่งขวา */
+.hero-content {
+  flex: 1;                      /* ครอบคลุมพื้นที่ที่เหลือ */
+}
+
+.hero-content h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #333333;
+  margin: 0 0 24px 0;           /* เว้นระยะห่างด้านล่าง 24px */
+  line-height: 1.2;
+}
+
+.hero-content p {
+  font-size: 1rem;
+  color: #4a4a4a;
+  margin: 0 0 24px 0;           /* เว้นระยะห่างด้านล่าง 24px */
+  line-height: 1.5;
+}
+
+/* ปุ่ม Start here */
+.hero-btn {
+  display: block;               /* หรือ inline-block เต็มความกว้างเนื้อหา */
+  background-color: #4a4a4a;    /* สีปุ่มเทาเข้ม */
+  color: #ffffff;
+  text-decoration: none;
+  padding: 8px 0;               /* Padding บน-ล่าง 8px ตามภาพ */
+  text-align: center;
+  font-size: 1rem;
+}
+
+/* ====================================================================*/
+/* Class Information */
+/* ====================================================================*/
+ /* คอนเทนเนอร์หลัก (.information) */
+.information {
+  display: flex;
+  padding: 32px 24px;         /* ขอบบน-ล่าง 32px, ขอบซ้าย-ขวา 24px */
+  gap: 24px;                  /* ระยะห่างระหว่างฝั่งซ้ายและขวา 24px */
+  background-color: #f4f4f4;  /* สีพื้นหลังรวม */
+  box-sizing: border-box;
+}
+/* Information Section */
+/* =========================================
+   1. ฝั่งซ้าย (Main Section - 60%)
+   ========================================= */
+.info-main {
+  flex: 0 0 60%;              /* ความกว้าง 60% ตามภาพ */
+  max-width: 60%;
+}
+
+.main-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 32px;        /* ระยะห่างจากรูปไปหัวข้อ 32px */
+}
+
+.main-content h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333333;
+  margin: 0 0 24px 0;         /* ระยะห่างใต้หัวข้อ 24px */
+}
+
+.main-content .quote {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555555;
+  margin: 0 0 24px 0;         /* ระยะห่างใต้ข้อความ Quote 24px */
+}
+
+.main-content .author {
+  font-size: 0.9rem;
+  color: #777777;
+  margin: 0;
+}
+
+/* =========================================
+   2. ฝั่งขวา (Sidebar - 40%)
+   ========================================= */
+.info-sidebar {
+  flex: 0 0 40%;              /* ความกว้าง 40% ตามภาพ */
+  max-width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* การ์ดย่อยแต่ละใบ */
+.info-card {
+  display: flex;
+  align-items: flex-start;
+  padding: 16px;              /* Padding ด้านในบ็อกซ์ย่อย 16px */
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.info-card:last-child {
+  border-bottom: none;
+  background-color: #e2e2e2;  /* Highlight การ์ดใบล่างตามรูปตัวอย่าง */
+}
+
+/* สัดส่วนภายในบ็อกซ์ย่อย (รูป 35% : เนื้อหา 65%) */
+.card-image {
+  flex: 0 0 35%;              /* ความกว้างรูปย่อย 35% */
+  max-width: 35%;
+}
+
+.card-image img {
+  width: 100%;
+  height: auto;               /* auto height ตามภาพ */
+  display: block;
+}
+
+.card-content {
+  flex: 0 0 65%;              /* ความกว้างเนื้อหาย่อย 65% */
+  max-width: 65%;
+  padding-left: 16px;         /* ระยะห่างระหว่างรูปย่อยกับข้อความ 16px */
+  box-sizing: border-box;
+}
+
+.card-content h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #333333;
+  margin: 0 0 8px 0;          /* ระยะห่างใต้หัวข้อย่อย 8px */
+}
+
+.card-content p {
+  font-size: 0.9rem;
+  color: #555555;
+  margin: 0 0 8px 0;          /* ระยะห่างใต้เนื้อหาย่อย 8px */
+  line-height: 1.4;
+}
+
+.card-content a {
+  font-size: 0.9rem;
+  color: #4a90e2;
+  text-decoration: none;
+}
+
+.card-content a:hover {
+  text-decoration: underline;
+}
+
+/*===== Class Courses Section ===== */
+/* คอนเทนเนอร์หลัก (.courses) */
+.courses {
+  background-color: #e8ecef;     /* สีพื้นหลังสีเทาอ่อน */
+  padding: 32px 72px;            /* บน-ล่าง 32px, ซ้าย-ขวา 72px ตามภาพ */
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* หัวข้อ Start learning */
+.courses h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #333333;
+  margin: 0 0 32px 0;            /* เว้นระยะห่างด้านล่าง 32px ไปยัง Grid */
+}
+
+/* ตารางจัดวางการ์ด 3 คอลัมน์ */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* แบ่ง 3 คอลัมน์เท่า ๆ กัน */
+  gap: 32px 32px;                /* ระยะห่างระหว่างการ์ดแนวนอนและแนวตั้ง 32px */
+}
+
+/* การ์ดแต่ละใบ */
+.course-card {
+  background-color: #ffffff;      /* ตัวการ์ดสีขาว */
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.course-card img {
+  width: 100%;
+  height: auto;                  /* ความสูง auto ตามป้ายกำกับ auto */
+  display: block;
+}
+
+/* เนื้อหาภายในตัวการ์ด */
+.card-content {
+  padding: 16px 16px 24px 16px;  /* บน 16px, ซ้าย-ขวา 16px, ล่าง 24px/32px */
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-content h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #333333;
+  margin: 0 0 8px 0;             /* เว้นระยะล่างไปที่หมวดหมู่ 8px */
+}
+
+.card-content .category {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #999999;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 8px;            /* เว้นระยะล่างไปที่คำอธิบาย 8px */
+}
+
+.card-content p {
+  font-size: 0.9rem;
+  color: #666666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/*===================================================================*/
+/* thesis section */
+/* ==================================================================*/
+/* คอนเทนเนอร์หลัก (.thesis) */
+.thesis {
+  background-color: #ffffff;
+  padding: 0 24px 32px 24px;   /* ซ้าย-ขวา 24px, ด้านล่าง 32px */
+  box-sizing: border-box;
+}
+
+/* หัวข้อหลัก Thesis exhibit */
+.thesis h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-align: center;
+  color: #333333;
+  margin: 32px 0;              /* บน-ล่าง 32px ตามภาพ */
+}
+
+/* กล่องครอบเลย์เอาต์ซ้าย-ขวา */
+.thesis-container {
+  display: flex;
+  gap: 24px;                   /* ระยะห่างระหว่างฝั่งวิดีโอกับการ์ดขวา 24px */
+}
+
+/* =========================================
+   1. ฝั่งซ้าย (Main Video Section - 60%)
+   ========================================= */
+.thesis-main {
+  flex: 0 0 60%;               /* ความกว้าง 60% ตามภาพ */
+  max-width: 60%;
+  max-height:fit-content;
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: #d8d8d8;   /* สีสำรองกรณีวิดีโอกำลังโหลด */
+  margin-bottom: 24px;         /* ระยะห่างใต้ Video 24px */
+}
+
+.thesis-main-content h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333333;
+  margin: 0 0 8px 0;           /* ระยะห่างใต้หัวข้อ 8px ตามภาพ */
+}
+
+.thesis-main-content p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #666666;
+  margin: 0;
+}
+
+/* =========================================
+   2. ฝั่งขวา (Sidebar Section - 40%)
+   ========================================= */
+.thesis-sidebar {
+  flex: 0 0 40%;               /* ความกว้าง 40% ตามภาพ */
+  max-width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ตัวการ์ดย่อย */
+.thesis-card {
+  display: flex;
+  align-items: flex-start;
+  padding: 16px;               /* Padding รอบด้านของการ์ด 16px */
+  box-sizing: border-box;
+}
+
+/* การ์ดที่มีสถานะ Highlighted (สีเทาตามภาพ) */
+.thesis-card.active {
+  background-color: #dcdcdc;   /* สีพื้นหลังการ์ดแรกตามรูป */
+}
+
+/* สัดส่วนภายในบ็อกซ์ย่อย (รูป 35% : เนื้อหา 65%) */
+.card-image {
+  flex: 0 0 35%;               /* ความกว้างรูปย่อย 35% */
+  max-width: 35%;
+}
+
+.card-image img {
+  width: 100%;
+  height: auto;                /* ความสูง auto ตามภาพ */
+  display: block;
+}
+
+.card-content {
+  flex: 0 0 65%;               /* ความกว้างเนื้อหา 65% */
+  max-width: 65%;
+  padding-left: 16px;          /* ระยะห่างระหว่างรูปย่อยกับข้อความ 16px */
+  box-sizing: border-box;
+}
+
+.card-content h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #333333;
+  margin: 0 0 8px 0;
+}
+
+.card-content p {
+  font-size: 0.9rem;
+  color: #666666;
+  margin: 0;
+  line-height: 1.4;
+}
