@@ -1,0 +1,284 @@
+/* ==================================================================== */
+/* Mobile Stylesheet (mobile.css)                                        */
+/* ออกแบบการแสดงผลสำหรับอุปกรณ์เคลื่อนที่ตามข้อกำหนดใน mobile.pdf             */
+/* ==================================================================== */
+
+/* ซ่อน Mobile Navigation ในสภาวะปกติ (หน้าจอเดสก์ท็อป) */
+.mobile-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* ------------------------------------------------------------------ */
+  /* [เพิ่มเติม/แก้ไข]: กำหนดให้เปลี่ยนรูปภาพในการ์ดย่อยของ Information Section  */
+  /* ไปใช้รูปภาพจากโฟลเดอร์ m-images บน Mobile Device                    */
+  /* ------------------------------------------------------------------ */
+
+  /* รูปการ์ดย่อยที่ 1: Orientation */
+  .info-sidebar .info-card:nth-child(1) .card-image img {
+    content: url("m-images/information-orientation-mobile.jpg");
+  }
+
+  /* รูปการ์ดย่อยที่ 2: Campus */
+  .info-sidebar .info-card:nth-child(2) .card-image img {
+    content: url("m-images/information-campus-mobile.jpg");
+  }
+
+  /* รูปการ์ดย่อยที่ 3: Guest lecture */
+  .info-sidebar .info-card:nth-child(3) .card-image img {
+    content: url("m-images/information-guest-lecture-mobile.jpg");
+  }
+
+  /* หมายเหตุ: ส่วน .info-main ถูกสั่ง display: none ไว้ใน mobile.css อยู่แล้วตามสเปก mobile.pdf[cite: 3, 5] */
+  /*=====================================================================*/
+  /* ------------------------------------------------------------------ */
+  /* 1. Header Section                                                  */
+  /* ------------------------------------------------------------------ */
+  .header {
+    height: 64px;
+    padding: 0 16px;
+    justify-content: space-between;
+  }
+
+  /* ซ่อนโลโก้และเมนูแบบข้อความของ Desktop */
+  .header-logo,
+  .header-nav {
+    display: none;
+  }
+
+  /* แสดงเฉพาะเมนูไอคอนบน Mobile */
+  .mobile-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 64px;
+  }
+
+  .mobile-nav a img {
+    height: 32px;
+    width: auto;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* 2. Hero Section                                                    */
+  /* ------------------------------------------------------------------ */
+  .hero {
+    flex-direction: column;
+    padding: 0 0 32px 0; /* ระยะห่างล่างสุด 32px ตาม mobile.pdf */
+    gap: 0;
+    background-color: #dcdcdc;
+  }
+
+  .hero-image {
+    flex: none;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .hero-content {
+    padding: 32px 16px 0 16px; /* ขอบบน 32px, ซ้าย-ขวา 16px */
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+    margin: 0 0 16px 0; /* ระยะห่างใต้หัวข้อ 16px ตาม mobile.pdf */
+    line-height: 1.2;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+    margin: 0 0 24px 0; /* ระยะห่างใต้ข้อความ 24px ตาม mobile.pdf */
+    line-height: 1.4;
+  }
+
+  .hero-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    background-color: #4a4a4a;
+    color: #ffffff;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* 3. Information Section                                             */
+  /* ------------------------------------------------------------------ */
+  .information {
+    flex-direction: column;
+    padding: 16px 0 32px 0;
+    gap: 0;
+    background-color: #ffffff;
+  }
+
+  /* ซ่อนส่วนเนื้อหาหลักฝั่งซ้าย (Main Image & Quote) ใน Mobile ตาม mobile.pdf */
+  .info-main {
+    display: none;
+  }
+
+
+
+
+  /* ปรับ Sidebar ให้เต็มความกว้าง */
+  .info-sidebar {
+    flex: none;
+    max-width: 100%;
+    width: 100%;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+
+  /* จัดเรียงการ์ดในลักษณะแนวตั้ง (Vertical Stack) */
+  .info-card {
+    flex-direction: column;
+    padding: 0 0 64px 0; /* ระยะห่างระหว่างแต่ละการ์ด 64px ตาม mobile.pdf */
+    border-bottom: none;
+  }
+
+  .info-card:last-child {
+    padding-bottom: 0;
+    background-color: transparent; /* ยกเลิกสีพื้นหลัง Highlight */
+  }
+
+  .card-image {
+    flex: none;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .card-content {
+    flex: none;
+    max-width: 100%;
+    width: 100%;
+    padding: 16px 0 0 0; /* ระยะห่างใต้รูปภาพ 16px ตาม mobile.pdf */
+  }
+
+  .card-content h3 {
+    font-size: 1.2rem;
+    margin: 0 0 16px 0; /* ระยะห่างใต้หัวข้อ 16px ตาม mobile.pdf */
+  }
+
+  .card-content p {
+    font-size: 0.95rem;
+    margin: 0 0 16px 0;
+  }
+
+  .card-content a {
+    color: #4a90e2;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* 4. Courses Section                                                 */
+  /* ------------------------------------------------------------------ */
+  .courses {
+    padding: 32px 16px;
+    background-color: #ffffff;
+  }
+
+  .courses h2 {
+    font-size: 2rem;
+    margin: 0 0 32px 0;
+    text-align: center;
+  }
+
+  /* เปลี่ยนจาก 3 คอลัมน์ Grid เป็น รายการปุ่มแนวตั้ง */
+  .courses-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* ระยะห่างระหว่างปุ่มคอร์ส */
+  }
+
+  .course-card {
+    background-color: #d8d8d8; /* พื้นหลังสีเทาอ่อนรูปปุ่มตามสเปก */
+    padding: 16px;
+    border-radius: 2px;
+  }
+
+  /* ซ่อนรูปภาพ, หมวดหมู่ และคำอธิบายคอร์สเรียนตาม mobile.pdf */
+  .course-card img,
+  .course-card .category,
+  .course-card p {
+    display: none;
+  }
+
+  .course-card .card-content {
+    padding: 0;
+  }
+
+  .course-card h3 {
+    font-size: 1.1rem;
+    margin: 0;
+    color: #333333;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* 5. Thesis Section                                                  */
+  /* ------------------------------------------------------------------ */
+  .thesis {
+    padding: 32px 0;
+    background-color: #ffffff;
+  }
+
+  .thesis h2 {
+    font-size: 2rem;
+    margin: 0 0 16px 0;
+    text-align: center;
+  }
+
+  .thesis-container {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .thesis-main {
+    flex: none;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .thesis-main .video-wrapper video {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    margin-bottom: 0;
+  }
+
+  /* ซ่อนเนื้อหาใต้คลิปวิดีโอ และ ซ่อนการ์ดย่อยฝั่งขวาตาม mobile.pdf */
+  .thesis-main-content,
+  .thesis-sidebar {
+    display: none;
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* 6. Footer Section                                                  */
+  /* ------------------------------------------------------------------ */
+  .footer {
+    padding: 16px;
+    justify-content: flex-start;
+    background-color: #ffffff;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .footer-copyright {
+    font-size: 0.85rem;
+    color: #666666;
+  }
+
+  /* ซ่อนลิงก์ Terms และ Privacy ในส่วน Footer ตาม mobile.pdf */
+  .footer-links {
+    display: none;
+  }
+}
